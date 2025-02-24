@@ -13,11 +13,7 @@ echo $var_num_uno / $var_num_dos . "<br>\n";
 echo "hallar el módulo de los números (el resto de dividir uno entre otro)<br>\n";
 echo $var_num_uno % $var_num_dos . "<br>\n";
 echo "ver si uno de los números es mayor o igual que el otro<br>\n";
-if ($var_num_uno > $var_num_dos) {
-    echo $var_num_uno . "<br>\n";
-} else {
-    echo $var_num_dos . "<br>\n";
-}
+if ($var_num_uno > $var_num_dos ? $var_num_uno . "<br>\n" : $var_num_dos . "<br>\n");
 echo "mostrar la variable booleana<br>\n";
 echo ($var_booleano ? "true" : "false") . "<br>\n";
 echo "negar la variable booleana<br>\n";
