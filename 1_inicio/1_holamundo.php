@@ -10,8 +10,8 @@
 <body>
     <h1>hola mundo<br></h1>
     <?php
-    echo "hola mundo<br>\n";
-    print "hola mundo<br>\n";
+    echo "<h1>hola mundo</h1>";
+    print "<h1>hola mundo</h1>";
     ?>
 </body>
 
