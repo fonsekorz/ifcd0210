@@ -5,4 +5,3 @@ if ($num > 50) {
 } else {
     echo "<span style='color: red;'>Cruz</span>";
 }
-?>
