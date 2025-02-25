@@ -25,4 +25,3 @@ switch ($tecla) {
         echo ("Tecla incorrecta");
         break;
 }
-//modificar
