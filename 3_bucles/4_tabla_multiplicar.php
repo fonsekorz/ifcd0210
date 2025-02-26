@@ -22,7 +22,7 @@
             width: 3em;
         }
 
-        td:nth-child(2) {
+        td:nth-child(even) {
             background-color: red;
         }
     </style>
