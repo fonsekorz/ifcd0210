@@ -5,10 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        table{
+            border: solid;
+            border-radius: 0.5em;
+        }
+        td{
+            border:solid;
+            border-radius: 0.2em;
+            background-color: #E2E;
+        }
+    </style>
 </head>
 
 <body>
-    <table border="1">
+    <table>
         <caption>Tabla de multiplicar del 7</caption>
         <?php
         define("NUM", 7);
