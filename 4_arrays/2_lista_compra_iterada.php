@@ -7,8 +7,8 @@
         echo ("<li>$lista_compra[$i]</li>");
     }
     echo ("<strong>Con un foreach:<br></strong>");
-    foreach ($lista_compra as $item) {
-        echo ("<li style='list-style:none;'><input type='checkbox'>$item</li>");
+    foreach ($lista_compra as $objeto) {
+        echo ("<li style='list-style:none;'><input type='checkbox'>$objeto</li>");
     }
     ?>
 </ul>
