@@ -33,7 +33,9 @@ function filtrar($array, $genero)
     $resultado = [];
     foreach ($array as $peli) {
         if ($peli['genero'] === $genero) {
-            $resultado[] = $peli;
+            array_push($resultado, $peli);
+            // otra forma
+            // $resultado[] = $peli;
         }
     }
     return $resultado;
