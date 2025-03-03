@@ -13,7 +13,6 @@ suma(7, 14);
 echo "<hr>";
 function sumav2($num1, $num2)
 {
-    $suma = $num1 + $num2;
-    return $suma;
+    return $num1 + $num2;
 }
 echo "La suma de 7 y 14 es: " . sumav2(7, 14);
