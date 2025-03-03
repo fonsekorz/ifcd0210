@@ -83,6 +83,10 @@ $peliculas_filtradas = filtrar($peliculas, $genero_filtrado);
             flex: 1;
             min-width: 270px;
         }
+
+        span {
+            margin: 5px;
+        }
     </style>
 </head>
 
