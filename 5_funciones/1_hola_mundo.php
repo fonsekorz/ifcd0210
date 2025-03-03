@@ -6,7 +6,6 @@ function saludo()
 {
     echo "hola mundo! ";
 }
-
-saludo();
-saludo();
-saludo();
+for ($i=0; $i < 5; $i++) { 
+    saludo();
+}
