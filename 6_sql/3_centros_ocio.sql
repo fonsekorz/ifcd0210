@@ -4,7 +4,7 @@ CREATE TABLE
         nombre VARCHAR(100),
         primer_apellido VARCHAR(100),
         segundo_apellido VARCHAR(100),
-        numero_cuenta INT,
+        numero_cuenta INT UNSIGNED,
         telefono VARCHAR(50),
         email VARCHAR(100),
         fecha_nacimiento DATE,
@@ -24,7 +24,7 @@ CREATE TABLE
 
 CREATE TABLE
     IF NOT EXISTS actividades (
-        cod_actividad INT AUTO_INCREMENT,
+        cod_actividad INT UNSIGNED AUTO_INCREMENT,
         nombre VARCHAR(100),
         fecha TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
         explicacion TEXT,
@@ -33,7 +33,7 @@ CREATE TABLE
 
 CREATE TABLE
     IF NOT EXISTS registros (
-        num_socio INT AUTO_INCREMENT,
+        num_socio INT UNSIGNED AUTO_INCREMENT,
         dni CHAR(9),
         cod_centro CHAR(3),
         fecha_alta TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
@@ -46,10 +46,10 @@ CREATE TABLE
 
 CREATE TABLE
     IF NOT EXISTS matriculas (
-        numero_matricula INT AUTO_INCREMENT,
+        numero_matricula INT UNSIGNED AUTO_INCREMENT,
         cod_centro CHAR(3),
         dni CHAR(9),
-        cod_actividad INT,
+        cod_actividad INT UNSIGNED,
         PRIMARY KEY (numero_matricula),
         KEY fk_matricula_centro (cod_centro),
         KEY fk_matricula_dni (dni),
@@ -70,7 +70,7 @@ CREATE TABLE
 
 CREATE TABLE
     IF NOT EXISTS reservas (
-        id INT AUTO_INCREMENT,
+        id INT UNSIGNED AUTO_INCREMENT,
         nombre_sala VARCHAR(100),
         dni CHAR(9),
         fecha TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
