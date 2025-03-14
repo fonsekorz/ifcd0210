@@ -1,5 +1,7 @@
 CREATE DATABASE zoo;
 
+CREATE DATABASE zoo;
+
 USE zoo;
 
 CREATE TABLE
@@ -69,8 +71,8 @@ CREATE TABLE
         dni_cuidador CHAR(9) NOT NULL,
         dni_voluntario CHAR(9) NOT NULL,
         cod_ejemplar SMALLINT UNSIGNED NOT NULL,
-        dia DATE,
-        hora TIME,
+        dia DATE DEFAULT CURRENT_DATE,
+        hora TIME DEFAULT CURRENT_TIME,
         incidencia TEXT,
         CONSTRAINT fk_visita_cuidador FOREIGN KEY (dni_cuidador) REFERENCES cuidadores (dni) ON DELETE CASCADE ON UPDATE CASCADE,
         CONSTRAINT fk_visita_voluntario FOREIGN KEY (dni_voluntario) REFERENCES voluntarios (dni) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -82,6 +84,7 @@ CREATE TABLE
         id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         cod_ejemplar SMALLINT UNSIGNED NOT NULL,
         dni_cuidador CHAR(9) NOT NULL,
+        fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT fk_cuidador_ejemplar_cod FOREIGN KEY (cod_ejemplar) REFERENCES ejemplares_animales (id) ON UPDATE CASCADE,
         CONSTRAINT fk_cuidador_ejemplar_dni FOREIGN KEY (dni_cuidador) REFERENCES cuidadores (dni) ON UPDATE CASCADE
     );
@@ -122,7 +125,7 @@ VALUES
 (2, NULL, NULL, '2021-07-10', NULL),
 (3, 1, 2, '2020-05-15', NULL),
 (4, 3, 2, '2023-02-20', '2025-03-10'),
-(5, 1, 4, '2021-12-05', NULL);   
+(5, 1, 4, '2021-12-05', NULL);
 
 -- Insertar cuidador_especie
 INSERT INTO cuidador_especie (cod_especie, dni_cuidador)
@@ -152,13 +155,13 @@ VALUES
 ('56789012E', '56789012J', 5, '2025-03-05', '14:00:00', 'Limpieza de zona del zorro');
 
 -- Insertar cuidador_ejemplar
-INSERT INTO cuidador_ejemplar (cod_ejemplar, dni_cuidador)
+INSERT INTO cuidador_ejemplar (cod_ejemplar, dni_cuidador, fecha)
 VALUES
-(1, '12345678A'),
-(2, '23456789B'),
-(3, '34567890C'),
-(4, '45678901D'),
-(5, '56789012E');
+  (1, '12345678A', '2025-03-14 09:30:00'),
+  (2, '23456789B', '2025-03-14 10:00:00'),
+  (3, '34567890C', '2025-03-14 11:00:00'),
+  (4, '45678901D', '2025-03-14 12:00:00'),
+  (5, '56789012E', '2025-03-14 13:00:00');
 
 
 
