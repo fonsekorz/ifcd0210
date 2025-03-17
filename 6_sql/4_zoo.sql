@@ -7,9 +7,9 @@ USE zoo;
 CREATE TABLE
     IF NOT EXISTS especies_animales (
         id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        nombre_cientifico VARCHAR(100) DEFAULT NULL,
-        nombre_generico VARCHAR(100) DEFAULT NULL,
-        familia VARCHAR(100) DEFAULT NULL,
+        nombre_cientifico VARCHAR(100) NOT NULL,
+        nombre_generico VARCHAR(100)  NOT NULL,
+        familia VARCHAR(100) NOT NULL,
         cuidados TEXT DEFAULT NULL,
         informacion TEXT DEFAULT NULL,
         explicacion TEXT DEFAULT NULL
@@ -43,7 +43,7 @@ CREATE TABLE
         fecha_nacimiento DATE NOT NULL,
         fecha_defuncion DATE DEFAULT NULL,
         CONSTRAINT fk_ejemplar_especie FOREIGN KEY (cod_especie) REFERENCES especies_animales (id) ON DELETE CASCADE ON UPDATE CASCADE,
-        CONSTRAINT fk_ejemplar_padre FOREIGN KEY (padre) REFERENCES ejemplares_animales (id),
+        CONSTRAINT fk_ejemplar_padre FOREIGN KEY (padre) REFERENCES ejemplares_animales (id) ON DELETE CASCADE ON UPDATE CASCADE,
         CONSTRAINT fk_ejemplar_madre FOREIGN KEY (madre) REFERENCES ejemplares_animales (id) ON DELETE CASCADE ON UPDATE CASCADE
     );
 
@@ -52,8 +52,8 @@ CREATE TABLE
         id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         cod_especie SMALLINT UNSIGNED NOT NULL,
         dni_cuidador CHAR(9) NOT NULL,
-        CONSTRAINT fk_cuidador_especie_cod FOREIGN KEY (cod_especie) REFERENCES especies_animales (id) ON DELETE CASCADE,
-        CONSTRAINT fk_cuidador_especie_dni FOREIGN KEY (dni_cuidador) REFERENCES cuidadores (dni) ON UPDATE CASCADE
+        CONSTRAINT fk_cuidador_especie_cod FOREIGN KEY (cod_especie) REFERENCES especies_animales (id) ON DELETE CASCADE ON UPDATE CASCADE,
+        CONSTRAINT fk_cuidador_especie_dni FOREIGN KEY (dni_cuidador) REFERENCES cuidadores (dni) ON DELETE CASCADE ON UPDATE CASCADE
     );
 
 CREATE TABLE
@@ -62,7 +62,7 @@ CREATE TABLE
         cod_ejemplar SMALLINT UNSIGNED NOT NULL,
         dni_voluntario CHAR(9) NOT NULL,
         CONSTRAINT fk_voluntario_ejemplar_cod FOREIGN KEY (cod_ejemplar) REFERENCES ejemplares_animales (id) ON DELETE CASCADE ON UPDATE CASCADE,
-        CONSTRAINT fk_voluntario_ejemplar_dni FOREIGN KEY (dni_voluntario) REFERENCES voluntarios (dni)
+        CONSTRAINT fk_voluntario_ejemplar_dni FOREIGN KEY (dni_voluntario) REFERENCES voluntarios (dni) ON DELETE CASCADE ON UPDATE CASCADE
     );
 
 CREATE TABLE
@@ -85,8 +85,8 @@ CREATE TABLE
         cod_ejemplar SMALLINT UNSIGNED NOT NULL,
         dni_cuidador CHAR(9) NOT NULL,
         fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        CONSTRAINT fk_cuidador_ejemplar_cod FOREIGN KEY (cod_ejemplar) REFERENCES ejemplares_animales (id) ON UPDATE CASCADE,
-        CONSTRAINT fk_cuidador_ejemplar_dni FOREIGN KEY (dni_cuidador) REFERENCES cuidadores (dni) ON UPDATE CASCADE
+        CONSTRAINT fk_cuidador_ejemplar_cod FOREIGN KEY (cod_ejemplar) REFERENCES ejemplares_animales (id) ON DELETE CASCADE ON UPDATE CASCADE,
+        CONSTRAINT fk_cuidador_ejemplar_dni FOREIGN KEY (dni_cuidador) REFERENCES cuidadores (dni) ON DELETE CASCADE ON UPDATE CASCADE
     );
 
     
