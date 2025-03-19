@@ -9,7 +9,7 @@ FROM ejemplares_animales
 WHERE cod_especie=4
 ORDER BY id;
 #El numero de animales preferidos asignados a un voluntario
-SELECT COUNT(cod_ejemplar) AS 'Numero animales'
+SELECT COUNT(cod_ejemplar) AS 'Numero animales', dni_voluntario AS 'DNI Voluntario'
 FROM voluntario_ejemplar
 WHERE dni_voluntario='34567890H';
 #El nombre, telefono del cuidador asignado a determinado ejemplar con un nombre específico
