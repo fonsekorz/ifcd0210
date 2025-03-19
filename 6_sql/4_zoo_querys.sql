@@ -1,11 +1,13 @@
 #Todos los cuidadores habilitados para cuidar una determinada especie (por Clave Primaria)
 SELECT * 
 FROM cuidador_especie
-WHERE cod_especie=3;
+WHERE cod_especie=3
+ORDER BY id;
 #Todos los ejemplares que pertenecen a una especie (por Clave Primaria)
 SELECT *
 FROM ejemplares_animales
-WHERE cod_especie=4;
+WHERE cod_especie=4
+ORDER BY id;
 #El numero de animales preferidos asignados a un voluntario
 SELECT COUNT(cod_ejemplar) AS 'Numero animales'
 FROM voluntario_ejemplar
