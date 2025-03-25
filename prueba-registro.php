@@ -2,7 +2,7 @@
 // Configuración de la base de datos
 $dbHost = 'localhost';
 $dbUser = 'root';
-$dbPass = 'serverwow';   
+$dbPass = 'serverwow';
 $dbName = 'pruebas_random';
 
 // Inicializar variables
@@ -22,10 +22,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "Todos los campos son obligatorios.";
     } elseif (strlen($username) < 3 || strlen($username) > 32) {
         $error = "El nombre de usuario debe tener entre 3 y 32 caracteres.";
+    } elseif (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
+        $error = "El nombre de usuario solo puede contener letras y números.";
     } elseif (strlen($password) < 8) {
         $error = "La contraseña debe tener al menos 8 caracteres.";
+    } elseif (!preg_match("/^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/", $password)) {
+        $error = "La contraseña debe tener al menos una mayúscula, un número y un carácter especial.";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Por favor, introduce un email válido.";
+    } elseif (strpos($email, ' ') !== false) {
+        $error = "El email no debe contener espacios.";
     } else {
         try {
             // Conectar a la base de datos
@@ -48,12 +54,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($stmt->fetchColumn()) {
                     $error = "Este email ya está en uso.";
                 } else {
-                    // Insertar nueva cuenta
-                    $stmt = $conn->prepare("INSERT INTO account (username, email, reg_mail, join_date) 
-                    VALUES (:username, :email, :reg_mail, NOW())");
+                    // Hashear la contraseña
+                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+                    // Insertar nueva cuenta con la contraseña encriptada
+                    $stmt = $conn->prepare("INSERT INTO account (username, email, reg_mail, password, join_date) 
+                    VALUES (:username, :email, :reg_mail, :password, NOW())");
                     $stmt->bindParam(':username', $username);
                     $stmt->bindParam(':email', $email);
                     $stmt->bindParam(':reg_mail', $email);
+                    $stmt->bindParam(':password', $hashedPassword);
                     $stmt->execute();
 
                     $success = "¡Cuenta creada con éxito! Ya puedes iniciar sesión.";
@@ -62,7 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
         } catch (PDOException $e) {
-            $error = "Error en la base de datos: " . $e->getMessage();
+            error_log("Error en la base de datos: " . $e->getMessage()); // Log para el administrador
+            $error = "Hubo un error al procesar tu solicitud. Por favor, inténtalo más tarde.";
         }
     }
 }

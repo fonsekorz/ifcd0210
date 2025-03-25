@@ -35,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($user) {
-                // Usuario encontrado, establecer sesión
+            if ($user && password_verify($password, $user['password'])) {
+                // Contraseña correcta, establecer sesión
                 $_SESSION['username'] = $user['username'];
                 $isLoggedIn = true;
             } else {
@@ -57,6 +57,7 @@ if (isset($_GET['logout'])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -135,14 +136,6 @@ if (isset($_GET['logout'])) {
             margin-bottom: 20px;
         }
 
-        .success {
-            color: #6bff6b;
-            background-color: rgba(0, 255, 0, 0.1);
-            padding: 10px;
-            border-radius: 3px;
-            margin-bottom: 20px;
-        }
-
         .footer {
             text-align: center;
             margin-top: 30px;
@@ -173,10 +166,11 @@ if (isset($_GET['logout'])) {
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <?php if (!$isLoggedIn && !isset($_SESSION['username'])): ?>
-            <h1>Iniciar Sesión - Aplicación Random</h1>
+            <h1>Iniciar Sesión</h1>
 
             <?php if (!empty($error)): ?>
                 <div class="error"><?php echo htmlspecialchars($error); ?></div>
@@ -203,13 +197,13 @@ if (isset($_GET['logout'])) {
                 <p>© 2025 - Restauradores Bercianos - Todos los derechos reservados.</p>
             </div>
 
-        <?php else: 
+        <?php else:
             // Sección de usuario logeado
             $loggedUsername = isset($_SESSION['username']) ? $_SESSION['username'] : $username;
         ?>
             <div class="logged-in-section">
                 <h1>¡Bienvenido, <?php echo htmlspecialchars($loggedUsername); ?>!</h1>
-                
+
                 <div class="logged-in-content">
                     <h2>Panel de Usuario</h2>
                     <p>Has iniciado sesión correctamente en la Aplicación Random.</p>
@@ -221,4 +215,5 @@ if (isset($_GET['logout'])) {
         <?php endif; ?>
     </div>
 </body>
+
 </html>
