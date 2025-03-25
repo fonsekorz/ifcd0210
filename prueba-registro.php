@@ -1,9 +1,9 @@
 <?php
 // Configuración de la base de datos
-$dbHost = 'localhost';    // Normalmente es localhost
-$dbUser = 'root';         // Tu usuario de la BD (hemos usado el ejemplo que diste)
-$dbPass = 'serverwow';    // Tu contraseña de la BD (hemos usado el ejemplo que diste)
-$dbName = 'pruebas_random';         // La base de datos 
+$dbHost = 'localhost';
+$dbUser = 'root';
+$dbPass = 'serverwow';   
+$dbName = 'pruebas_random';
 
 // Inicializar variables
 $username = $password = $email = '';
