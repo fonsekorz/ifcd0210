@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="./procesar.php" method="post">
+        <fieldset>
+            <legend>Formulario de conctacto</legend>
+            <label for="input-email">Email</label><br>
+            <input type="email" name="email" id="input-email" placeholder="email@example.com"><br>
+            <label for="input-password">Password</label><br>
+            <input type="password" name="password" id="input-password" placeholder="contraseña"><br>
+            <span>Departamento</span><br>
+            <input type="radio" name="departamento" id="radio-compras" value="compras"><label
+                for="radio-compras">Compras</label><br>
+            <input type="radio" name="departamento" id="radio-calidad" value="calidad"><label
+                for="radio-calidad">Calidad</label><br>
+            <input type="radio" name="departamento" id="radio-atc" value="atc"><label
+                for="radio-atc">Atc</label><br>
+            <label for="input-comentario">Comentario:</label><br>
+            <textarea name="text-comentario" id="text-comentario" style="resize: none;" placeholder="Comentarios"></textarea><br>
+            <input type="checkbox" id="input-terminos" name="input-terminos"><label for="input-terminos">Acepto las condiciones</label><br>
+            <button type="submit">Enviar</button>
+        </fieldset>
+    </form>
+</body>
+
+</html>
