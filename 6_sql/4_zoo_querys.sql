@@ -30,17 +30,15 @@ INNER JOIN ejemplares_animales ON cuidador_ejemplar.cod_ejemplar=ejemplares_anim
 INNER JOIN especies_animales ON ejemplares_animales.cod_especie=especies_animales.id
 WHERE especies_animales.nombre_generico='León';
 #El nombre del cuidador, nombre del ejemplar, fecha nacimiento ejemplar y nombre de voluntario de las visitas entre dos fechas determinadas
-SELECT cuidadores.nombre AS nombre_cuidador, 
-    especies_animales.nombre_generico AS nombre_especie, 
-    ejemplares_animales.fecha_nacimiento, 
-    voluntarios.nombre AS nombre_voluntario
-FROM visitas, ejemplares_animales, especies_animales, voluntarios, cuidador_ejemplar, cuidadores
-WHERE visitas.cod_ejemplar = ejemplares_animales.id
-AND ejemplares_animales.cod_especie = especies_animales.id
-AND visitas.dni_voluntario = voluntarios.dni
-AND ejemplares_animales.id = cuidador_ejemplar.cod_ejemplar
-AND cuidador_ejemplar.dni_cuidador = cuidadores.dni
-AND visitas.dia BETWEEN '2025-03-01' AND '2025-03-05';
+SELECT cuidadores.nombre AS nombre_cuidador,
+ejemplares_animales.nombre AS nombre_animal,
+ejemplares_animales.fecha_nacimiento AS fecha_nacimiento,
+voluntarios.nombre AS nombre_voluntario
+FROM cuidadores
+INNER JOIN visitas ON cuidadores.dni=visitas.dni_cuidador
+INNER JOIN ejemplares_animales ON visitas.cod_ejemplar=ejemplares_animales.id
+INNER JOIN voluntarios ON visitas.dni_voluntario=voluntarios.dni
+WHERE visitas.dia BETWEEN '2025-03-01' AND '2025-03-05';
 
 
 

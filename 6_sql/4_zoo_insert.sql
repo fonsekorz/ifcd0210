@@ -26,13 +26,13 @@ VALUES
 ('56789012J', 'Elena', 'Martín', 'Alonso', '1997-03-30', '656789012');
 
 -- Insertar ejemplares animales
-INSERT INTO ejemplares_animales (cod_especie, padre, madre, fecha_nacimiento, fecha_defuncion)
+INSERT INTO ejemplares_animales (cod_especie,nombre, padre, madre, fecha_nacimiento, fecha_defuncion)
 VALUES
-(1, NULL, NULL, '2022-06-01', NULL),
-(2, NULL, NULL, '2021-07-10', NULL),
-(3, 1, 2, '2020-05-15', NULL),
-(4, 3, 2, '2023-02-20', '2025-03-10'),
-(5, 1, 4, '2021-12-05', NULL);
+(1,'Ejemplar uno', NULL, NULL, '2022-06-01', NULL),
+(2,'Ejemplar dos', NULL, NULL, '2021-07-10', NULL),
+(3,'Ejemplar tres', 1, 2, '2020-05-15', NULL),
+(4,'Ejemplar cuatro', 3, 2, '2023-02-20', '2025-03-10'),
+(5,'Ejemplar cinco', 1, 4, '2021-12-05', NULL);
 
 -- Insertar cuidador_especie
 INSERT INTO cuidador_especie (cod_especie, dni_cuidador)
@@ -80,13 +80,13 @@ VALUES
 (5, '12345678A');
 
 -- Insertar más ejemplares animales
-INSERT INTO ejemplares_animales (cod_especie, padre, madre, fecha_nacimiento, fecha_defuncion)
+INSERT INTO ejemplares_animales (cod_especie,nombre, padre, madre, fecha_nacimiento, fecha_defuncion)
 VALUES
-(1, NULL, NULL, '2020-05-15', NULL),
-(2, NULL, NULL, '2019-08-22', NULL),
-(3, 1, 2, '2023-01-10', NULL),
-(4, 3, 2, '2022-09-30', NULL),
-(5, 1, 4, '2021-04-25', NULL);
+(1,'Ejemplar seis', NULL, NULL, '2020-05-15', NULL),
+(2,'Ejemplar siete', NULL, NULL, '2019-08-22', NULL),
+(3,'Ejemplar ocho', 1, 2, '2023-01-10', NULL),
+(4,'Ejemplar nueve', 3, 2, '2022-09-30', NULL),
+(5,'Ejemplar diez', 1, 4, '2021-04-25', NULL);
 
 -- Asignar más voluntarios a ejemplares
 INSERT INTO voluntario_ejemplar (cod_ejemplar, dni_voluntario)
