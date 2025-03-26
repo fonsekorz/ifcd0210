@@ -13,8 +13,8 @@ $password = '$uper$ecr3t';
 
 // Comprobar si se han enviado credenciales
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $get_username = htmlspecialchars($_POST['username']);
-    $get_password = $_POST['password'];
+    $get_username = trim(htmlspecialchars($_POST['username']));
+    $get_password = trim($_POST['password']);
 
     // Validar credenciales
     if ($get_username === $user && $get_password === $password) {
