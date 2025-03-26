@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6_Formularios: 3.Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0a0a0a;
+            background-size: cover;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffcc00;
+            margin-bottom: 30px;
+            text-shadow: 0 0 5px #000;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4a6da7;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #5c8bd6;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.8em;
+            margin-top: 2ch;
+
+        }
+
+        .requirements {
+            font-size: 0.8em;
+            color: #c9c9c9;
+            margin-top: 2ch;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Login</h1>
+    <!-- aquí va el formulario de login con usuario(text) y contraseña(password) -->
+    <div class="form-container">
+        <form method="post" action="./login.php">
+            <fieldset>
+                <legend>6_Formularios: 3.Login</legend>
+                <div class="form-group">
+                    <label for="username">Nombre de Usuario:</label>
+                    <input type="text" id="username" name="username" placeholder="Usuario" minlength="3" maxlength="20"
+                        pattern="[A-Za-z0-9_]+" required>
+                    <div class="requirements">
+                        El nombre de usuario debe:
+                        <ul>
+                            <li>Tener entre 3 y 20 caracteres</li>
+                            <li>Contener solo letras, números y guiones bajos</li>
+                        </ul>
+                    </div>
+                    <div id="usernameError" class="error" aria-live="polite"></div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" placeholder="Contraseña" minlength="8"
+                        maxlength="30" pattern="(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*]).{8,}" required>
+                    <div class="requirements">
+                        La contraseña debe:
+                        <ul>
+                            <li>Tener al menos 8 caracteres</li>
+                            <li>Contener al menos un número</li>
+                            <li>Contener al menos un carácter especial (!@#$%^&*)</li>
+                        </ul>
+                    </div>
+                    <div id="passwordError" class="error" aria-live="polite"></div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Iniciar Sesión">
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>
