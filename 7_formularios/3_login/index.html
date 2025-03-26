@@ -60,6 +60,19 @@
             box-sizing: border-box;
         }
 
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .eye-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
         input[type="submit"] {
             background-color: #4a6da7;
             color: white;
@@ -83,13 +96,18 @@
             color: red;
             font-size: 0.8em;
             margin-top: 2ch;
-
         }
 
         .requirements {
             font-size: 0.8em;
             color: #c9c9c9;
             margin-top: 2ch;
+        }
+
+        /* Estilos para los iconos del ojo */
+        .eye-icon img {
+            width: 30px; /* Aumentado el tamaño */
+            height: 30px; /* Aumentado el tamaño */
         }
     </style>
 </head>
@@ -116,8 +134,16 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña:</label>
-                    <input type="password" id="password" name="password" placeholder="Contraseña" minlength="8"
-                        maxlength="30" pattern="(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*]).{8,}" required>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" placeholder="Contraseña" minlength="8"
+                            maxlength="30" pattern="(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*]).{8,}" required>
+                        <div class="eye-icon" id="togglePassword">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/visible.png" id="eyeOpen"
+                                alt="ojo abierto">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/invisible.png" id="eyeClosed"
+                                alt="ojo cerrado" style="display: none;">
+                        </div>
+                    </div>
                     <div class="requirements">
                         La contraseña debe:
                         <ul>
@@ -134,6 +160,24 @@
             </fieldset>
         </form>
     </div>
+    <script>
+        // Obtención de los elementos necesarios
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordField = document.getElementById('password');
+        const eyeOpen = document.getElementById('eyeOpen');
+        const eyeClosed = document.getElementById('eyeClosed');
+
+        // Función para alternar la visibilidad de la contraseña
+        togglePassword.addEventListener('click', function () {
+            // Cambiar tipo de input
+            const type = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = type;
+
+            // Alternar la visibilidad de los iconos del ojo
+            eyeOpen.style.display = eyeOpen.style.display === 'none' ? 'inline-block' : 'none';
+            eyeClosed.style.display = eyeClosed.style.display === 'none' ? 'inline-block' : 'none';
+        });
+    </script>
 </body>
 
 </html>
