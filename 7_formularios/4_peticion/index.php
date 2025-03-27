@@ -165,6 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="submit" name="borrar-texts" value="Borrar Todo" class="borrar-btn">
                     </form>';
             } else {
+                //Si el JSON está vacío, mostrar:
                 echo "<p>No hay textos almacenados.</p>";
             }
             ?>
