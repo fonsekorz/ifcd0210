@@ -45,35 +45,11 @@ if (file_exists($jsonFile)) {
 // Verificar si la solicitud es un POST, si el formulario se ha enviado
 // $_SERVER["REQUEST_METHOD"] es una variable superglobal que contiene el método de solicitud   
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verificar si se presionó el botón "Borrar Todo"
-    if (isset($_POST['borrar-texts'])) {
-        // Si se presiona "Borrar Todo", vaciar el JSON
-        file_put_contents($jsonFile, json_encode([]));
-        $texts = [];
-    } else {
-        // Obtener y limpiar el texto ingresado
-        // trim() para eliminar espacios en blanco al inicio y final
-        // ?? '' para asignar un valor por defecto si no se envía el campo  (evita errores)
-        $inputText = trim($_POST['input-text'] ?? '');
 
-        // Guardar solo si no está vacío
-        if (!empty($inputText) && preg_match('/^[a-zA-Z0-9Ñ\s,.-]+$/', $inputText)) {
-            // Añadir el texto al array
-            // htmlspecialchars() para escapar caracteres especiales
-            // ENT_QUOTES para escapar comillas simples y dobles
-            // 'UTF-8' para indicar la codificación de caracteres
-            $texts[] = htmlspecialchars($inputText, ENT_QUOTES, 'UTF-8');
-            // Guardar el array en el archivo JSON
-            file_put_contents($jsonFile, json_encode($texts, JSON_PRETTY_PRINT));
-        } else {
-            echo "<script>alert('El texto ingresado no es válido.')</script>";
-        }
-    }
 }
 ?>
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -88,8 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding: 20px;
         }
 
-        .form-container,
-        .show-result {
+        .form-container {
             max-width: 400px;
             margin: 20px auto;
             background-color: rgba(0, 0, 0, 0.8);
@@ -98,20 +73,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
-        legend,
-        h1 {
-            margin-bottom: 20px;
+        .show-result {
+            max-width: 400px;
+            margin:  auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        legend {
+            font-weight: bold;
             color: #ffcc00;
+            margin-bottom: 30px;
             text-shadow: 0 0 5px #000;
         }
 
+        h1 {
+            text-align: center;
+            color: #ffcc00;
+            text-shadow: 0 0 5px #000;
+        }
         label {
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
             color: #ffcc00;
         }
-
         input[type="text"] {
             width: 100%;
             padding: 12px;
@@ -122,8 +110,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             box-sizing: border-box;
         }
 
-        input[type="submit"],
-        .borrar-btn {
+
+        input[type="submit"] {
             margin-top: 20px;
             background-color: #4a6da7;
             color: white;
@@ -139,40 +127,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
-        input[type="submit"]:hover,
-        .borrar-btn:hover {
+        input[type="submit"]:hover {
             background-color: #5c8bd6;
-        }
-
-        .clear-btn {
-            background-color: #a74a4a;
-        }
-
-        .clear-btn:hover {
-            background-color: #d65c5c;
         }
 
         .form-group {
             margin-bottom: 20px;
-        }
-
-        #new-text p {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            padding: 10px 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 1.5;
-            transition: all 0.3s ease-in-out;
-        }
-
-        #new-text p:hover {
-            background-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
         }
     </style>
 </head>
@@ -195,33 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="show-result">
             <h1>Resultados</h1>
             <div id="new-text">
-                <?php
-                // Con un array
-                //if (!empty($_SESSION['texts'])) {
-                //    foreach ($_SESSION['texts'] as $text) {
-                //        echo "<p>$text</p>";
-                //}
-                // Mostrar los textos almacenados en el JSON
-                if (!empty($texts)) {
-                    // Recorrer el array de textos y mostrar cada uno
-                    foreach ($texts as $text) {
-                        echo "<p>$text</p>";
-                    }
-
-                    // Mostrar botón para borrar todos los textos
-                    echo '<form action="" method="post" onsubmit="return confirmDelete()">
-                        <input type="submit" name="borrar-texts" value="Borrar Todo" class="borrar-btn">
-                    </form>';
-                } else {
-                    echo "<p>No hay textos almacenados.</p>";
-                }
-                ?>
-                <script>
-                    // Función para confirmar el borrado de todos los textos
-                    function confirmDelete() {
-                        return confirm("¿Estás seguro de que quieres borrar todos los textos?");
-                    }
-                </script>
+                
             </div>
         </div>
     </section>
