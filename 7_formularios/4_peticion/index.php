@@ -1,4 +1,32 @@
 <?php
+// Con array
+/* 
+session_start();
+
+// Inicializar el array si no existe en la sesión
+if (!isset($_SESSION['texts'])) {
+    $_SESSION['texts'] = [];
+}
+
+// Verificar si la solicitud es un POST (cuando el usuario envía el formulario)
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Si se presionó "Borrar Todo", vaciar el array de sesión
+    if (isset($_POST['borrar-texts'])) {
+        $_SESSION['texts'] = [];
+    } else {
+        // Obtener y limpiar el texto ingresado
+        $inputText = trim($_POST['input-text'] ?? '');
+
+        // Validar que el texto no esté vacío y que contenga caracteres permitidos
+        if (!empty($inputText) && preg_match('/^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s,.-]+$/', $inputText)) {
+            // Agregar el texto al array de sesión
+            $_SESSION['texts'][] = htmlspecialchars($inputText, ENT_QUOTES, 'UTF-8');
+        } else {
+            echo "<script>alert('El texto ingresado no es válido.')</script>";
+        }
+    }
+}
+*/
 // Definir el archivo JSON donde se almacenarán los textos
 $jsonFile = 'data.json';
 
@@ -152,6 +180,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h1>Resultados</h1>
             <div id="new-text">
             <?php
+            // Con un array
+            //if (!empty($_SESSION['texts'])) {
+            //    foreach ($_SESSION['texts'] as $text) {
+            //        echo "<p>$text</p>";
+            //}
             // Mostrar los textos almacenados en el JSON
             if (!empty($texts)) {
                 // Recorrer el array de textos y mostrar cada uno
