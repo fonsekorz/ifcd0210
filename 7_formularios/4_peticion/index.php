@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $inputText = trim($_POST['input-text'] ?? '');
         
         // Guardar solo si no está vacío
-        if (!empty($inputText) && preg_match('/^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s,.-]+$/', $inputText)) {
+        if (!empty($inputText) && preg_match('/^[a-zA-Z0-9Ñ\s,.-]+$/', $inputText)) {
             // Añadir el texto al array
             // htmlspecialchars() para escapar caracteres especiales
             // ENT_QUOTES para escapar comillas simples y dobles
@@ -169,7 +169,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <legend>Formulario</legend>
                     <div class="form-group">
                         <label for="input-text">Introduce Texto:</label>
-                        <input type="text" id="input-text" name="input-text">
+                        <input type="text" id="input-text" name="input-text" required>
                         <input type="submit" value="Añadir">
                     </div>
                 </fieldset>
