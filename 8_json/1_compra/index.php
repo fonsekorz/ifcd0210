@@ -9,14 +9,13 @@ function mostrarLista()
     //3) Iterar el array renderizando (pintando) el html pertinente 
     $jsonFile = 'compra.json';
     $array = json_decode(file_get_contents($jsonFile), true);
-    var_dump($jsonFile);
-    echo "<hr>";
+    echo "<ul>";
     foreach ($array as $elemento) {
         foreach ($elemento as $value) {
-            echo "$value ";
+            echo "<li style='list-style-type:none;'>$value</li>";
         }
-        echo "<br>";
     }
+    echo "</ul>";
 }
 
 ?>
@@ -30,7 +29,8 @@ function mostrarLista()
 </head>
 
 <body>
-    <h1><?php mostrarLista() ?></h1>
+    <h1>Lista de la compra</h1>
+    <p><?php mostrarLista() ?></p>
 </body>
 
 </html>
