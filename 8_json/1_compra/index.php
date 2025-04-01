@@ -11,8 +11,8 @@ function mostrarLista()
     $array = json_decode(file_get_contents($jsonFile), true);
     echo "<ul>";
     foreach ($array as $elemento) {
-        foreach ($elemento as $value) {
-            echo "<li style='list-style-type:none;'>$value</li>";
+        foreach ($elemento as $key => $value) {
+            echo "<li style='list-style-type:none;'>$key : $value</li>";
         }
     }
     echo "</ul>";

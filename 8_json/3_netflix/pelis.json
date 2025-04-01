@@ -1,0 +1,31 @@
+[
+    {
+        "titulo": "El gran Lebowsky",
+        "año": 1998,
+        "director": "Los hermanos Coen",
+        "generos": [
+            "Comedia",
+            "Crimen"
+        ]
+    },
+    {
+        "titulo": "Enemigo a las puertas",
+        "año": 2001,
+        "director": "Jean-Jacques Annaud",
+        "generos": [
+            "Belico",
+            "Historico",
+            "Western"
+        ]
+    },
+    {
+        "titulo": "Como entrenar a tu dragon",
+        "año": 2010,
+        "director": "Chris Sanders, Dean DeBlois",
+        "generos": [
+            "Animacion",
+            "Comedia",
+            "Accion"
+        ]
+    }
+]
