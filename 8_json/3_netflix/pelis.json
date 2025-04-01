@@ -27,5 +27,149 @@
             "Comedia",
             "Accion"
         ]
+    },
+    {
+        "titulo": "El señor de los Anillos: La comunidad del Anillo",
+        "año": "2001",
+        "director": "Peter Jackson",
+        "generos": [
+            "Fantasía",
+            "Aventura"
+        ]
+    },
+    {
+        "titulo": "Matrix",
+        "año": "1999",
+        "director": "Lana Wachowski, Lilly Wachowski",
+        "generos": [
+            "Ciencia ficción",
+            "Acción"
+        ]
+    },
+    {
+        "titulo": "Inception",
+        "año": "2010",
+        "director": "Christopher Nolan",
+        "generos": [
+            "Ciencia ficción",
+            "Acción",
+            "Suspenso"
+        ]
+    },
+    {
+        "titulo": "Gladiator",
+        "año": "2000",
+        "director": "Ridley Scott",
+        "generos": [
+            "Acción",
+            "Drama"
+        ]
+    },
+    {
+        "titulo": "Pulp Fiction",
+        "año": "1994",
+        "director": "Lana y Lilly Wachowski",
+        "generos": [
+            "Ciencia ficción",
+            "Acción",
+            "Suspensa"
+        ]
+    },
+    {
+        "titulo": "El Caballero Oscuro",
+        "año": "2008",
+        "director": "Christopher Nolan",
+        "generos": [
+            "Acción",
+            "Crimen",
+            "Drama"
+        ]
+    },
+    {
+        "titulo": "El Padrino",
+        "año": "1972",
+        "director": "Francis Ford Coppola",
+        "generos": [
+            "Crimen",
+            "Drama"
+        ]
+    },
+    {
+        "titulo": "Parque Jurásiico",
+        "año": "1993",
+        "director": "Steven Spielberg",
+        "generos": [
+            "Ciencia ficción",
+            "Aventura",
+            "Acción"
+        ]
+    },
+    {
+        "titulo": "Los infiltrados",
+        "año": "2006",
+        "director": "Martin Scorsese",
+        "generos": [
+            "Crimen",
+            "Drama",
+            "Suspense"
+        ]
+    },
+    {
+        "titulo": "Forrest Gump",
+        "año": "1994",
+        "director": "Robert Zemeckis",
+        "generos": [
+            "Drama",
+            "Comedia",
+            "Romance"
+        ]
+    },
+    {
+        "titulo": "Titanic",
+        "año": "1997",
+        "director": "James Cameron",
+        "generos": [
+            "Drama",
+            "Romance"
+        ]
+    },
+    {
+        "titulo": "El Resplandor",
+        "año": "1980",
+        "director": "Stanley Kubrick",
+        "generos": [
+            "Terror",
+            "Drama",
+            "Misterio"
+        ]
+    },
+    {
+        "titulo": "Coco",
+        "año": "2017",
+        "director": "Lee Unkrich, Adrian Molina",
+        "generos": [
+            "Animación",
+            "Aventura",
+            "Familia"
+        ]
+    },
+    {
+        "titulo": "La La Land",
+        "año": "2016",
+        "director": "Damien Chazelle",
+        "generos": [
+            "Musical",
+            "Drama",
+            "Romance"
+        ]
+    },
+    {
+        "titulo": "Pesadilla en Elm Street",
+        "año": "1984",
+        "director": "Wes Craven",
+        "generos": [
+            "Terror",
+            "Misterio"
+        ]
     }
 ]
