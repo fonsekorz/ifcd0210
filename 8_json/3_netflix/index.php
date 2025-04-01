@@ -6,7 +6,7 @@ $peliculas = json_decode(file_get_contents($jsonFile), true);
 
 function mostrarPelis($array)
 {
-    echo "<table>";
+    echo "<table class='cajas'>";
     echo "<tr>";
     echo "<th>Título</th>";
     echo "<th>Año</th>";
@@ -31,7 +31,6 @@ function filtrarPeli($elemento)
     global $peliculas;
     $pelisfiltradas = [];
 
-    echo "<h1>Películas Filtradas</h1>";
     foreach ($peliculas as $pelicula) {
         foreach ($pelicula['generos'] as $genero) {
             if ($genero == $elemento) {
@@ -40,9 +39,7 @@ function filtrarPeli($elemento)
             }
         }
     }
-    if (empty($pelisfiltradas)) {
-        echo "<h1>No existe ninguna película con el género '$elemento'.</h1>";
-    } else {
+    if (!empty($pelisfiltradas)) {
         mostrarPelis($pelisfiltradas);
     }
 }
@@ -55,25 +52,39 @@ function filtrarPeli($elemento)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Películas</title>
     <style>
+        *{
+            box-sizing: border-box;
+        }
         body {
             font-family: Arial, sans-serif;
-            background-color: rgba(99, 101, 102, 0.4);
+            background-color: #f4f6f9;
             margin: 0;
             padding: 20px;
             text-align: center;
         }
 
         h1 {
-            color: #007bff;
+            color: #0056b3;
         }
 
-        form {
+        #form-container {
+            width: 90%;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .cajas {
+            justify-content: center;
+            align-items: center;
             background: #ffffff;
             padding: 20px;
             margin: 20px auto;
-            width: 47%;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            border-collapse: collapse;
+            overflow: hidden;
         }
 
         fieldset {
@@ -88,7 +99,7 @@ function filtrarPeli($elemento)
 
         input[type="text"],
         [type="number"] {
-            width: 80%;
+            width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -96,30 +107,20 @@ function filtrarPeli($elemento)
         }
 
         input[type="submit"] {
-            width: 84%;
-            background-color: #007bff;
+            width: 100%;
+            background-color: #0056b3;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 20px;
             margin-top: 10px;
             font-size: 16px;
             cursor: pointer;
             border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
         input[type="submit"]:hover {
-            background-color: rgb(135, 159, 184);
-        }
-
-        table {
-            background: #ffffff;
-            padding: 20px;
-            margin: 20px auto;
-            width: 50%;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-collapse: collapse;
-            overflow: hidden;
+            background-color: #004085;
         }
 
         td,
@@ -130,31 +131,48 @@ function filtrarPeli($elemento)
         }
 
         th {
-            background-color: #007bff;
+            background-color: #0056b3;
             color: white;
         }
 
         tr:hover {
-            background-color: #f1f1f1;
+            background-color: #e9ecef;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .cajas {
+                padding: 15px;
+            }
+
+            input[type="text"],
+            [type="number"] {
+                width: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
-    <h1>Películas</h1>
-    <?php mostrarPelis($peliculas) ?>
-    <form action="index.php" method="post">
-        <fieldset>
-            <label for="buscar-peli">Buscar pelicula por genero:</label>
-            <input type="text" id="buscar-peli" name="buscar-peli">
-            <input type="submit" name="submit-peli" value="Buscar">
-        </fieldset>
-    </form>
-    <?php
-    if (isset($_POST['submit-peli'])  && !empty($_POST['buscar-peli'])) {
-        $resultado = filtrarPeli($_POST['buscar-peli']);
-    }
-    ?>
+    <div id=form-container>
+        <h1>Películas</h1>
+        <?php
+        if (isset($_POST['submit-peli']) && isset($_POST['buscar-peli']) && !empty($_POST['buscar-peli'])) {
+            $resultado = filtrarPeli($_POST['buscar-peli']);
+        } else {
+            mostrarPelis($peliculas);
+        }
+        ?>
+        <form action="index.php" method="post" class="cajas">
+            <fieldset>
+                <label for="buscar-peli">Buscar pelicula por genero:</label>
+                <input type="text" id="buscar-peli" name="buscar-peli">
+                <input type="submit" name="submit-peli" value="Buscar">
+            </fieldset>
+    </div>
 </body>
 
 </html>
