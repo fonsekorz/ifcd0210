@@ -329,8 +329,6 @@ if (isset($_POST['submit-agregar']) && isset($_POST['agregar-peli']) && !empty($
                 width: 48%;
             }
         }
-
-        }
     </style>
 </head>
 
