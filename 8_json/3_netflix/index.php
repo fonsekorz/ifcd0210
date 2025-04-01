@@ -55,17 +55,24 @@ function agregarPelicula($elemento)
 {
     global $peliculas;
 
-    // Agregar la nueva película al arreglo de películas
-    $peliculas[] = $elemento;
+    // Comprobamos si el elemento es un arreglo y si tiene las claves necesarias
+    if (is_array($elemento) && isset($elemento['titulo'], $elemento['año'], $elemento['director'])) {
+        // Validar que los campos no estén vacíos
+        if (empty($elemento['titulo']) || empty($elemento['año']) || empty($elemento['director'])) {
+            return; // No agregamos la película si alguno de los campos está vacío
+        }
 
-    // Guardar las películas en el archivo JSON
-    file_put_contents('pelis.json', json_encode($peliculas, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        // Agregar la nueva película al arreglo de películas
+        $peliculas[] = $elemento;
+
+        // Guardar las películas en el archivo JSON
+        file_put_contents('pelis.json', json_encode($peliculas, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    }
 }
 
 function ResetearPelis()
 {
     //Restaurar el archivo original
-    // Copiar el archivo original a pelis.json
     copy('pelis_originales.json', 'pelis.json');
 }
 
@@ -86,7 +93,7 @@ function eliminarPelicula($titulo)
     file_put_contents('pelis.json', json_encode($peliculas, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 }
 
-//Eliminar una película del array y guardar en el archivo JSON
+// Eliminar una película del array y guardar en el archivo JSON
 // Si se presiona el botón de eliminar, se elimina la película
 // y se redirige a la página principal
 if (isset($_POST['submit-eliminar']) && isset($_POST['eliminar-peli']) && !empty($_POST['eliminar-peli'])) {
@@ -105,10 +112,9 @@ if (isset($_POST['reset'])) {
     exit;
 }
 
-//Agregar una película al array y guardar en el archivo JSON
+// Agregar una película al array y guardar en el archivo JSON
 // Comprobar si el formulario ha sido enviado
 if (isset($_POST['submit-agregar']) && isset($_POST['agregar-peli']) && !empty($_POST['agregar-peli'])) {
-
     // Limpiar y validar los datos del formulario
     $titulo = trim($_POST['agregar-peli']);
     $año = trim($_POST['agregar-año']);
@@ -117,8 +123,8 @@ if (isset($_POST['submit-agregar']) && isset($_POST['agregar-peli']) && !empty($
 
     // Crear un array para la nueva película
     $nuevaPelicula = [
-        'titulo' => htmlspecialchars($titulo),  // Sanitizar el título para evitar inyecciones
-        'año' => $año,                          // Puedes añadir validación para el año si es necesario
+        'titulo' => htmlspecialchars($titulo),  // Sanitizar el título 
+        'año' => $año,  // No es necesario sanitizar el año, pero se puede validar si es un número
         'director' => htmlspecialchars($director),  // Sanitizar el director
         'generos' => array_map('htmlspecialchars', $generos)  // Sanitizar los géneros
     ];
