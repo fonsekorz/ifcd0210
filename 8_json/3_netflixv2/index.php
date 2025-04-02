@@ -162,6 +162,10 @@ if (isset($_POST['submit-agregar']) && isset($_POST['agregar-peli']) && !empty($
             margin-bottom: 10px;
         }
 
+        h1.h1form {
+            background-color: rgba(138, 136, 136, 0.57);
+        }
+
         #main-container {
             display: flex;
             justify-content: center;
@@ -178,14 +182,14 @@ if (isset($_POST['submit-agregar']) && isset($_POST['agregar-peli']) && !empty($
         #form-container {
             flex: 1;
             max-width: 40%;
-            position: sticky;
+            position: static;
             top: 20px;
             margin-left: 20px;
             margin-bottom: 20px;
             box-sizing: border-box;
             background-color: #f1f5f9;
             border-radius: 10px;
-            padding: 20px;
+            padding: 0 20px 20px 20px; 
             flex-wrap: wrap;
         }
 
@@ -401,6 +405,7 @@ if (isset($_POST['submit-agregar']) && isset($_POST['agregar-peli']) && !empty($
             ?>
         </div>
         <div id="form-container">
+            <h1 class="h1form">Formulario</h1>
             <form action="index.php" method="post" class="cajas">
                 <fieldset>
                     <label for="buscar-peli">Buscar película por genero:</label>

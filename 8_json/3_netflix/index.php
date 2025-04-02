@@ -162,10 +162,17 @@ if (isset($_POST['submit-agregar']) && isset($_POST['agregar-peli']) && !empty($
 
         h1 {
             color: #0056b3;
+            width: 100%;
             text-align: center;
+            border: 2px solid #0056b3;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f1f5f9;
+            margin-bottom: 10px;
         }
 
         #main-container {
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -180,7 +187,7 @@ if (isset($_POST['submit-agregar']) && isset($_POST['agregar-peli']) && !empty($
         #form-container {
             flex: 1;
             max-width: 40%;
-            position: sticky;
+            position: static;
             top: 20px;
             margin-left: 20px;
             margin-bottom: 20px;
@@ -339,9 +346,10 @@ if (isset($_POST['submit-agregar']) && isset($_POST['agregar-peli']) && !empty($
 </head>
 
 <body>
+    <h1>Películas</h1>
     <div id="main-container">
         <div id="movies-container">
-            <h1>Películas</h1>
+
             <?php
             if (isset($_POST['submit-peli']) && isset($_POST['buscar-peli']) && !empty($_POST['buscar-peli'])) {
                 filtrarPeli($_POST['buscar-peli']);
