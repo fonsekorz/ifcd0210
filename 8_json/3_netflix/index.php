@@ -55,14 +55,14 @@ function agregarPelicula($elemento)
 {
     global $peliculas;
 
-    // Comprobamos si el elemento es un arreglo y si tiene las claves necesarias
+    // Comprobamos si el elemento es un array y si tiene las claves necesarias
     if (is_array($elemento) && isset($elemento['titulo'], $elemento['año'], $elemento['director'])) {
         // Validar que los campos no estén vacíos
         if (empty($elemento['titulo']) || empty($elemento['año']) || empty($elemento['director'])) {
             return; // No agregamos la película si alguno de los campos está vacío
         }
 
-        // Agregar la nueva película al arreglo de películas
+        // Agregar la nueva película al array de películas
         $peliculas[] = $elemento;
 
         // Guardar las películas en el archivo JSON
