@@ -7,9 +7,9 @@ function mostrarPelis($array)
     foreach ($array as $pelicula) {
         echo "<div class='card'>";
         echo "<span>" . htmlspecialchars($pelicula['titulo'], ENT_QUOTES, 'UTF-8') . "</span>";
-        echo "<span>" . htmlspecialchars($pelicula['año'], ENT_QUOTES, 'UTF-8') . "</span>";
-        echo "<span>" . htmlspecialchars($pelicula['director'], ENT_QUOTES, 'UTF-8') . "</span>";
-        echo "<span>" . htmlspecialchars(implode(", ", $pelicula['generos']), ENT_QUOTES, 'UTF-8') . "</span>";
+        echo "<span>Año: " . htmlspecialchars($pelicula['año'], ENT_QUOTES, 'UTF-8') . "</span>";
+        echo "<span>Director: " . htmlspecialchars($pelicula['director'], ENT_QUOTES, 'UTF-8') . "</span>";
+        echo "Genero: <span> " . htmlspecialchars(implode(", ", $pelicula['generos']), ENT_QUOTES, 'UTF-8') . "</span>";
         echo "</div>";
     }
 }
@@ -159,6 +159,7 @@ if (isset($_POST['submit-agregar']) && isset($_POST['agregar-peli']) && !empty($
             padding: 20px;
             border-radius: 10px;
             background-color: #f1f5f9;
+            margin-bottom: 10px;
         }
 
         #main-container {
@@ -170,6 +171,7 @@ if (isset($_POST['submit-agregar']) && isset($_POST['agregar-peli']) && !empty($
             padding: 20px;
             border-radius: 10px;
             background-color: #f1f5f9;
+            min-width: 100%;
         }
 
 
@@ -202,7 +204,8 @@ if (isset($_POST['submit-agregar']) && isset($_POST['agregar-peli']) && !empty($
         .cajas {
             justify-content: center;
             align-items: center;
-            background: #ffffff;
+            background-color: rgba(138, 136, 136, 0.57);
+            border: 2px solid #0056b3;
             padding: 20px;
             margin: 20px auto;
             border-radius: 10px;
@@ -220,7 +223,7 @@ if (isset($_POST['submit-agregar']) && isset($_POST['agregar-peli']) && !empty($
             flex: 1;
             min-width: 270px;
             max-width: 50%;
-            background-color: #ffffff;
+            background-color: rgba(138, 136, 136, 0.57);
             transition: background-color 0.3s ease, transform 0.2s ease;
             border: 2px solid #0056b3;
             border-radius: 10px;
@@ -314,7 +317,7 @@ if (isset($_POST['submit-agregar']) && isset($_POST['agregar-peli']) && !empty($
         [type="number"] {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ccc;
+            border: 2px solid #0056b3;
             border-radius: 5px;
             font-size: 16px;
         }

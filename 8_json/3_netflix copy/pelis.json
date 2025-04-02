@@ -171,5 +171,22 @@
             "Terror",
             "Misterio"
         ]
+    },
+    {
+        "titulo": "Ali G anda suelto",
+        "año": "2002",
+        "director": "Mark Mylod",
+        "generos": [
+            "Comedia"
+        ]
+    },
+    {
+        "titulo": "Snatch. Cerdos y diamantes",
+        "año": "2000",
+        "director": "Guy Ritchie",
+        "generos": [
+            "Comedia",
+            "Crimen"
+        ]
     }
 ]
